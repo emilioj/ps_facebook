@@ -337,6 +337,9 @@ class Ps_facebook extends Module
 
     public function hookActionCartSave(array $params)
     {
+        /** Added to solve incompatibility with ST-Easycheckout module */
+        if($this->context->controller->getPageName()=='module-steasycheckout-default')
+            return;
         /** @var EventDispatcher $eventDispatcher */
         $eventDispatcher = $this->getService(EventDispatcher::class);
 
